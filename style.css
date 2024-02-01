@@ -43,12 +43,14 @@ main {
     grid-auto-flow: row;
 }
 main input {
+    padding: 1rem;
     margin: 1rem;
+    margin-top: 0.5rem;
 }
 main label,
 main select {
     margin: 1rem;
-    margin-bottom: -1rem;
+    margin-bottom: 0;
 }
 
 footer,

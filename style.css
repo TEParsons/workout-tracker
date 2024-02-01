@@ -6,6 +6,16 @@
     color: white;
 }
 
+@media (pointer:none), (pointer:coarse) {    
+    :root {
+        font-size: 48pt;
+    }
+}
+
+input, select, option {
+    font-size: 1rem;
+}
+
 body {
     background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)), url("background.jpg");
     background-size: cover;
@@ -100,6 +110,7 @@ option {
     padding: 0.5rem;
     border-spacing: 0;
     empty-cells: show;
+    font-size: 14pt;
 }
 tr.grand-head {
     color: rgba(255, 255, 255, 0.5);
@@ -130,5 +141,8 @@ td:hover, th:hover {
     }
     * {
         color: black;
+    }
+    :root {
+        font-size: 18pt;
     }
 }

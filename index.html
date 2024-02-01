@@ -1,0 +1,33 @@
+<head>
+    <link rel="stylesheet" href="style.css"></link>
+    <script src="functions.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Workout Tracker</h1>
+    </header>
+    <main>
+        <label for="exercise">Exercise</label>
+        <input type="text" id="exercise" name="exercise"></input>
+        <label for="weight">Intensity</label>
+        <input type="number" id="weight" name="weight"></input>
+        <label for="reps">Reps</label>
+        <input type="number" id="reps" name="reps"></input>
+
+        <div id="canvas" hidden>
+            <table id="table" onload="build_table()">
+            </table>
+        </div>
+    </main>
+    <footer id="buttons">
+        <div id="editor-buttons">
+            <input type="button" id="add_set" value="Add set" onclick="add_set()"></input>
+            <input type="button" id="show_tbl" value="View workout" onclick="show_table()"></input>
+        </div>
+        <div id="viewer-buttons" hidden>
+            <input type="button" id="export_tbl" value="Export" onclick="export_workout()"></input>
+            <input type="button" id="hide_tbl" value="Back" onclick="hide_table()"></input>
+        </div>
+    </footer>
+</body>

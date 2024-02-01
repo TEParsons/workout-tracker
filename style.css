@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Jockey+One&display=swap');
+
+:root, input {
+    font-family: Jockey One;
+    font-size: 18pt;
+    color: white;
+}
+
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)), url("background.jpg");
+    background-size: cover;
+    background-color: #161616;
+}
+
+header, main, footer {
+    position: relative;
+    width: 50vh;
+    margin: auto;
+    display: grid;
+    align-content: center;
+    justify-content: auto;
+}
+
+header {
+    justify-content: center;
+    grid-auto-flow: row;
+}
+
+main {
+    align-content: start;
+    grid-auto-flow: row;
+}
+main input {
+    margin: 1rem;
+}
+main label {
+    margin: 1rem;
+    margin-bottom: -1rem;
+}
+
+footer {
+    grid-auto-flow: column;
+    justify-content: end;
+}
+footer input {
+    margin: 0.5rem 0.25rem;    
+}
+
+
+input {
+    background-color: transparent;
+    border: none;
+    border-radius: 6pt;
+    padding: 0.5rem 1rem;
+    outline: none;
+}
+input:hover,
+label:hover + label,
+input:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+label {
+    opacity: 0.5;
+}
+label:hover {
+    opacity: 1;
+}
+
+
+#canvas {
+    position: absolute;
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 6pt;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 10;
+}
+
+#table {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem;
+    border-spacing: 0;
+}
+tr.grand-head {
+    color: rgba(255, 255, 255, 0.5);
+}
+tr.weight-row th,
+tr.weight-row td {
+    border-top: 1px solid white;
+}
+td, th {
+    padding: 0.5rem;
+}
+td:hover, th:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+@media print {
+    #canvas {
+        position: fixed;
+        background-color: white;
+        border-radius: 0;
+    }
+    #table, th, td {
+        border-collapse: collapse;
+        border: 1px solid black;
+        height: auto;
+    }
+    * {
+        color: black;
+    }
+}

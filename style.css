@@ -12,13 +12,15 @@ body {
     background-color: #161616;
 }
 
-header, main, footer {
+header, main, #ctrls, footer {
     position: relative;
-    width: 50vh;
     margin: auto;
     display: grid;
     align-content: center;
-    justify-content: auto;
+    min-width: 50vh;
+}
+header, #ctrls, footer {
+    width: 50vh;
 }
 
 header {
@@ -39,7 +41,9 @@ main select {
     margin-bottom: -1rem;
 }
 
-footer {
+footer,
+#editor-buttons,
+#viewer-buttons {
     grid-auto-flow: column;
     justify-content: end;
 }
@@ -80,19 +84,19 @@ option {
 
 
 #canvas {
-    position: absolute;
+    position: relative;
     background-color: black;
     border: 1px solid white;
     border-radius: 6pt;
-    top: 0; left: 0; right: 0; bottom: 0;
+    width: auto;
+    margin: auto;
+    min-width: 50vh;
     z-index: 10;
 }
 
 #table {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: auto;
     padding: 0.5rem;
     border-spacing: 0;
     empty-cells: show;
@@ -115,6 +119,7 @@ td:hover, th:hover {
 @media print {
     #canvas {
         position: fixed;
+        top: 0; bottom: 0; left: 0; right: 0;
         background-color: white;
         border-radius: 0;
     }

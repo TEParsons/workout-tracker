@@ -8,19 +8,20 @@
         <h1>Workout Tracker</h1>
     </header>
     <main>
-        <label for="exercise" id="exercise-lbl">Exercise</label>
-        <input type="text" id="exercise-ctrl" name="exercise"></input>
-        <select id="weight-lbl" value="Weight">
-            <option value="Weight">Weight</option>
-            <option value="Intensity">Intensity</option>
-        </select>
-        <input type="number" id="weight-ctrl" name="weight"></input>
-        <select id="reps-lbl" value="Reps">
-            <option value="Reps">Reps</option>
-            <option value="Time">Time</option>
-        </select>
-        <input type="number" id="reps-ctrl" name="reps"></input>
-
+        <div id="ctrls">
+            <label for="exercise" id="exercise-lbl">Exercise</label>
+            <input type="text" id="exercise-ctrl" name="exercise"></input>
+            <select id="weight-lbl" value="Weight">
+                <option value="Weight">Weight</option>
+                <option value="Intensity">Intensity</option>
+            </select>
+            <input type="number" id="weight-ctrl" name="weight"></input>
+            <select id="reps-lbl" value="Reps">
+                <option value="Reps">Reps</option>
+                <option value="Time">Time</option>
+            </select>
+            <input type="number" id="reps-ctrl" name="reps"></input>
+        </div>
         <div id="canvas" hidden>
             <table id="table" onload="build_table()">
             </table>

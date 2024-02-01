@@ -2,11 +2,22 @@
 
 
 function set_table_visibility(visibility) {
-    // show/hide table
-    document.getElementById("canvas").hidden = !visibility;
-    // show/hide buttons
-    document.getElementById("editor-buttons").hidden = visibility;
-    document.getElementById("viewer-buttons").hidden = !visibility;
+    if (visibility) {
+        // show/hide table
+        document.getElementById("canvas").style.display = "grid";
+        document.getElementById("ctrls").style.display = "none";
+        // show/hide buttons
+        document.getElementById("editor-buttons").style.display = "none";
+        document.getElementById("viewer-buttons").style.display = "grid";
+    } else {
+        // show/hide table
+        document.getElementById("canvas").style.display = "none";
+        document.getElementById("ctrls").style.display = "grid";
+        // show/hide buttons
+        document.getElementById("editor-buttons").style.display = "grid";
+        document.getElementById("viewer-buttons").style.display = "none";
+    }
+
     // build table
     build_table()
 }

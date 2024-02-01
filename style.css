@@ -83,6 +83,7 @@ label:hover {
     height: 100%;
     padding: 0.5rem;
     border-spacing: 0;
+    empty-cells: show;
 }
 tr.grand-head {
     color: rgba(255, 255, 255, 0.5);

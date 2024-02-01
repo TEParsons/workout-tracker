@@ -10,9 +10,15 @@
     <main>
         <label for="exercise" id="exercise-lbl">Exercise</label>
         <input type="text" id="exercise-ctrl" name="exercise"></input>
-        <label for="weight" id="weight-lbl">Weight</label>
+        <select id="weight-lbl" value="Weight">
+            <option value="Weight">Weight</option>
+            <option value="Intensity">Intensity</option>
+        </select>
         <input type="number" id="weight-ctrl" name="weight"></input>
-        <label for="reps" id="reps-lbl">Reps</label>
+        <select id="reps-lbl" value="Reps">
+            <option value="Reps">Reps</option>
+            <option value="Time">Time</option>
+        </select>
         <input type="number" id="reps-ctrl" name="reps"></input>
 
         <div id="canvas" hidden>

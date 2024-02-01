@@ -29,7 +29,9 @@ function add_set() {
     // get relevant controls
     let exercise_ctrl = document.getElementById("exercise-ctrl");
     let weight_ctrl = document.getElementById("weight-ctrl");
+    let weight_lbl = document.getElementById("weight-lbl");
     let reps_ctrl = document.getElementById("reps-ctrl");
+    let reps_lbl = document.getElementById("reps-lbl");
     // get exercise
     let key = exercise_ctrl.value;
     // if new exercise, add to workout
@@ -40,6 +42,10 @@ function add_set() {
     workout[key].push({
         weight: weight_ctrl.value,
         reps: reps_ctrl.value,
+        labels: {
+            "weight": weight_lbl.value,
+            "reps": reps_lbl.value
+        },
     });
     // clear ctrls
     weight_ctrl.value = "";
@@ -50,8 +56,6 @@ function build_table() {
     // get elements
     let table_emt = document.getElementById("table");
     let exercise_lbl = document.getElementById("exercise-lbl");
-    let weight_lbl = document.getElementById("weight-lbl");
-    let reps_lbl = document.getElementById("reps-lbl");
     // clear table
     table_emt.innerHTML = "";
     // make heading row
@@ -70,6 +74,8 @@ function build_table() {
     for (let key in workout) {
         // get sets for this exercise
         let sets = workout[key];
+        // headers for this exercise
+        let labels = {'weight': new Set(), 'reps': new Set()}
         // update max cols
         cols = Math.max(sets.length, cols)
         // create rows for this exercise
@@ -86,10 +92,8 @@ function build_table() {
         weight_row.appendChild(exercise_th);
         // add weight / reps headings
         let weight_th = document.createElement("th");
-        weight_th.textContent = weight_lbl.textContent;
         weight_row.appendChild(weight_th);
         let reps_th = document.createElement("th");
-        reps_th.textContent = reps_lbl.textContent;
         reps_row.appendChild(reps_th);
         // iterate through sets...
         for (let this_set of sets) {
@@ -101,7 +105,13 @@ function build_table() {
             let reps_td = document.createElement("td");
             reps_td.textContent = this_set['reps'];
             reps_row.appendChild(reps_td);
+            // update headers
+            labels['weight'].add(this_set['labels']['weight']);
+            labels['reps'].add(this_set['labels']['reps']);
         }
+        // update headers
+        weight_th.textContent = Array.from(labels['weight']).join(" / ");
+        reps_th.textContent = Array.from(labels['reps']).join(" / ");
     }
     // add set headers
     for (let set_n of Array(cols).keys()) {

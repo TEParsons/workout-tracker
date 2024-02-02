@@ -111,12 +111,13 @@ option {
     border-spacing: 0;
     empty-cells: show;
     font-size: 14pt;
+    border-collapse: collapse;
 }
 tr.grand-head {
     color: rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid white;
 }
-tr.weight-row th,
-tr.weight-row td {
+tr.weight-row {
     border-top: 1px solid white;
 }
 td, th {
@@ -135,7 +136,6 @@ td:hover, th:hover {
         border-radius: 0;
     }
     #table, th, td {
-        border-collapse: collapse;
         border: 1px solid black;
         height: auto;
     }

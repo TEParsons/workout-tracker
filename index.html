@@ -1,6 +1,7 @@
 <head>
     <link rel="stylesheet" href="style.css"></link>
     <script src="functions.js"></script>
+    <title>Workout Tracker</title>
 </head>
 
 <body>
@@ -33,8 +34,10 @@
             <input type="button" id="show_tbl" value="View workout" onclick="show_table()"></input>
         </div>
         <div id="viewer-buttons" hidden>
-            <input type="button" id="export_tbl" value="Export" onclick="export_workout()"></input>
+            <input type="button" id="export_pdf" value="Export PDF" onclick="export_workout_pdf()"></input>
+            <input type="button" id="export_csv" value="Export CSV" onclick="export_workout_csv()"></input>
             <input type="button" id="hide_tbl" value="Back" onclick="hide_table()"></input>
+            <a id="file_buffer" hidden></a>
         </div>
     </footer>
 </body>

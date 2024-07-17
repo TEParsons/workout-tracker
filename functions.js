@@ -1,8 +1,3 @@
-// get current date
-let date = new Date();
-// set filename
-document.title = `Workout ${date.getFullYear()}_${date.getMonth()}_${date.getDay()}`;
-
 /** Table visibility functions **/
 
 
@@ -64,7 +59,7 @@ function add_set() {
         },
     });
     // clear ctrls
-    weight_ctrl.value = "";
+    reps_ctrl.value = "";
 }
 
 function build_table() {
@@ -136,7 +131,50 @@ function build_table() {
     }
 }
 
-function export_workout() {
+
+/** Export functions */
+
+function export_workout_pdf() {
     // print to pdf
-    print()
+    print();
+}
+
+function export_workout_csv() {
+    // dummy link to trigger save box
+    let emt = document.getElementById('file_buffer');
+    // start with blank string
+    let content = "";
+    // construct csv string
+    for (key in workout) {
+        // get sets for this exercise
+        let sets = workout[key];
+        // exercise name
+        content += `${key},`;
+        // weight label
+        content += `${sets[0].labels['weight']},`
+        // weight row
+        for (let this_set of sets) {
+            content += `${this_set.weight},`;
+        }
+        // newline and blank first cell
+        content += "\n ,";
+        // reps label
+        content += `${sets[0].labels['reps']},`;
+        // reps row
+        for (let this_set of sets) {
+            content += `${this_set.reps},`;
+        }
+        // newline
+        content += "\n";
+    }
+    // construct filename 
+    let date = new Date();
+    let filename = `Workout ${date.getFullYear()}_${date.getMonth()}_${date.getDay()}.csv`;
+    // set filename
+    emt.setAttribute('download', filename);
+    // encode content
+    content = "data:text/plain;charset=utf-8," + encodeURIComponent(content);
+    emt.setAttribute('href', content);
+    // click dummy link to trigger save box
+    emt.click();
 }

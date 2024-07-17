@@ -139,9 +139,7 @@ function export_workout_pdf() {
     print();
 }
 
-function export_workout_csv() {
-    // dummy link to trigger save box
-    let emt = document.getElementById('file_buffer');
+async function export_workout_csv() {
     // start with blank string
     let content = "";
     // construct csv string
@@ -167,14 +165,21 @@ function export_workout_csv() {
         // newline
         content += "\n";
     }
-    // construct filename 
+    // blobify content
+    blob = new Blob([content], {type: "text/csv"})
+    // construct default filename 
     let date = new Date();
     let filename = `Workout ${date.getFullYear()}_${date.getMonth()}_${date.getDay()}.csv`;
-    // set filename
-    emt.setAttribute('download', filename);
-    // encode content
-    content = "data:text/plain;charset=utf-8," + encodeURIComponent(content);
-    emt.setAttribute('href', content);
-    // click dummy link to trigger save box
-    emt.click();
+    // save
+    await window.showSaveFilePicker({ suggestedName: filename }).then(
+        function (result) {
+            result.createWritable().then(
+                async function (result) {
+                    // write file
+                    await result.write(blob);
+                    await result.close();
+                }
+            )
+        }
+    )
 }

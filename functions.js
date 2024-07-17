@@ -1,3 +1,8 @@
+// get current date
+let date = new Date()
+// set filename
+document.title = `Workout ${date.getFullYear()}_${date.getMonth()}_${date.getDay()}`
+
 /** Table visibility functions **/
 
 
@@ -133,5 +138,6 @@ function build_table() {
 }
 
 function export_workout() {
+    // print to pdf
     print()
 }

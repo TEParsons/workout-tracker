@@ -1,7 +1,7 @@
 // get current date
-let date = new Date()
+let date = new Date();
 // set filename
-document.title = `Workout ${date.getFullYear()}_${date.getMonth()}_${date.getDay()}`
+document.title = `Workout ${date.getFullYear()}_${date.getMonth()}_${date.getDay()}`;
 
 /** Table visibility functions **/
 

@@ -65,7 +65,6 @@ function add_set() {
     });
     // clear ctrls
     weight_ctrl.value = "";
-    reps_ctrl.value = "";
 }
 
 function build_table() {

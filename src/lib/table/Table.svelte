@@ -30,38 +30,42 @@
         return output
     })
 </script>
-
-<table class=workout-session>
-    <tbody>
-        {#each Object.entries(byExercise) as [name, exercise]}
-            <tr class=intensity>
-                <th rowspan="2">{name}</th>
-                <th>{exercise.intensity.join("/")}</th>
-                {#each exercise.sets as set}
-                    <td>{set.intensity.value}</td>
-                {/each}
-            </tr>
-            <tr class=quantity>
-                <th>{exercise.quantity.join("/")}</th>
-                {#each exercise.sets as set}
-                    <td>{set.quantity.value}</td>
-                {/each}
-            </tr>
-        {/each}
-    </tbody>
-</table>
+<div class=container>
+    <table class=workout-session>
+        <tbody>
+            {#each Object.entries(byExercise) as [name, exercise]}
+                <tr class=intensity>
+                    <th rowspan="2">{name}</th>
+                    <th>{exercise.intensity.join("/")}</th>
+                    {#each exercise.sets as set}
+                        <td>{set.intensity.value}</td>
+                    {/each}
+                </tr>
+                <tr class=quantity>
+                    <th>{exercise.quantity.join("/")}</th>
+                    {#each exercise.sets as set}
+                        <td>{set.quantity.value}</td>
+                    {/each}
+                </tr>
+            {/each}
+        </tbody>
+    </table>
+</div>
 
 <style>
+    .container {
+        overflow-x: auto;
+        max-width: 100%;
+    }
     table { 
         border-collapse: collapse;
         background-color: var(--base);
-        border: 2px solid var(--crust);
     }
     td, th {
-        padding: .5rem;
-        
+        padding: .5rem 1rem;
     }
     td {
+        font-family: var(--mono);
         border: 2px solid var(--crust);
     }
     th {

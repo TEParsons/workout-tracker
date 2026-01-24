@@ -19,13 +19,13 @@
 
     font-family: var(--body);
     color: var(--text);
-    font-size: 18pt;
+    font-size: 16pt;
     
 }
 
 @media (pointer:none), (pointer:coarse) {    
     :root {
-        font-size: 48pt;
+        font-size: 18pt;
     }
 }
 

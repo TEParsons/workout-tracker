@@ -4,6 +4,7 @@
     import ExerciseCtrl from "$lib/ctrls/ExerciseCtrl.svelte";
     import CtrlPair from "$lib/ctrls/CtrlPair.svelte";
     import Table from "$lib/table/Table.svelte";
+    import ClearBtn from "$lib/ctrls/ClearBtn.svelte";
     import Export from "$lib/table/Export.svelte";
     import { onMount, setContext } from "svelte";
 
@@ -81,6 +82,9 @@
             >
                 Back    
             </button>
+            <ClearBtn
+                bind:session={session}
+            />
             <Export 
                 bind:session={session}
             />

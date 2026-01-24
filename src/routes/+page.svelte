@@ -5,7 +5,7 @@
     import CtrlPair from "$lib/ctrls/CtrlPair.svelte";
     import Table from "$lib/table/Table.svelte";
     import Export from "$lib/table/Export.svelte";
-    import { setContext } from "svelte";
+    import { onMount, setContext } from "svelte";
 
     let session = $state([]);
 
@@ -23,7 +23,17 @@
 
     let view = $state.raw("add")
 
-    $inspect(session)
+    onMount(() => {
+        // load session from local data on reload, if possible
+        if (localStorage["workout-tracker-session"]) {
+            session = JSON.parse(localStorage["workout-tracker-session"])
+        }
+
+        $effect(() => {
+            // once session has been setup
+            localStorage.setItem("workout-tracker-session", JSON.stringify(session))
+        })
+    })
 </script>
 
 <header>

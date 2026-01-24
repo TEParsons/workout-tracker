@@ -31,4 +31,7 @@
         flex-direction: row;
         gap: .5rem;
     }
+    .type-ctrl {
+        padding: .25rem 0;
+    }
 </style>

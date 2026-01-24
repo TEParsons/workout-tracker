@@ -10,33 +10,33 @@ permissions:
   pages: write
   id-token: write
 
-
-deploy:
-  environment:
-    name: github-pages
-    url: ${{ steps.deployment.outputs.page_url }}
-  runs-on: ubuntu-latest
-  steps:
-    # checkout repo
-    - name: Checkout
-      uses: actions/checkout@v4
-    # setup GitHub Pages
-    - name: Setup Pages
-      uses: actions/configure-pages@v5
-    # setup node
-    - name: Setup node
-      uses: actions/setup-node@v6
-    # build site
-    - name: Build site
-      uses: actions/setup-node@v6
-    - run: npm i
-    - run: npm run build
-    # upload static site
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
-      with:
-        path: 'build'
-    # deploy
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      # checkout repo
+      - name: Checkout
+        uses: actions/checkout@v4
+      # setup GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      # setup node
+      - name: Setup node
+        uses: actions/setup-node@v6
+      # build site
+      - name: Build site
+        uses: actions/setup-node@v6
+      - run: npm i
+      - run: npm run build
+      # upload static site
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'build'
+      # deploy
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

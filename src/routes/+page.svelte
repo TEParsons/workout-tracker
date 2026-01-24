@@ -1,0 +1,113 @@
+<script>
+    import { ctrls as intensityCtrls } from "$lib/ctrls/intensity";
+    import { ctrls as quantityCtrls } from "$lib/ctrls/quantity";
+    import ExerciseCtrl from "$lib/ctrls/ExerciseCtrl.svelte";
+    import CtrlPair from "$lib/ctrls/CtrlPair.svelte";
+    import Table from "$lib/table/Table.svelte";
+    import Export from "$lib/table/Export.svelte";
+    import { setContext } from "svelte";
+
+    let session = $state([]);
+
+    let set = $state({
+        exercise: "",
+        intensity: {
+            type: "intensity",
+            value: undefined
+        },
+        quantity: {
+            type: "time",
+            value: undefined
+        }
+    })
+
+    let view = $state.raw("add")
+
+    $inspect(session)
+</script>
+
+<header>
+    <h1>Workout Tracker</h1>
+</header>
+<main>
+    {#if view === "add"}
+        <div class=ctrls>
+            <ExerciseCtrl 
+                bind:value={set.exercise}
+                bind:intensity={set.intensity}
+                bind:quantity={set.quantity}
+            />
+            <CtrlPair 
+                bind:value={set.intensity.value}
+                bind:type={set.intensity.type}
+                ctrls={intensityCtrls}
+            />
+            <CtrlPair 
+                bind:value={set.quantity.value}
+                bind:type={set.quantity.type}
+                ctrls={quantityCtrls}
+            />
+        </div>
+        <div class=buttons>
+            <button
+                onclick={evt => session.push($state.snapshot(set))}
+            >
+                Add set
+            </button>
+            <button
+                onclick={evt => view = "view"}
+            >
+                View table
+            </button>
+        </div>
+    {/if}
+    {#if view === "view"}
+        <Table 
+            bind:session={session}
+        />
+        <div class=buttons>
+            <button
+                onclick={evt => view = "add"}
+            >
+                Back    
+            </button>
+            <Export 
+                bind:session={session}
+            />
+        </div>
+    {/if}
+</main>
+
+
+<style>
+    header {
+        display: flex;
+        justify-content: center;
+    }
+
+    main {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 30rem;
+        gap: 1rem;
+    }
+
+    .ctrls {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: .5rem;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: row;
+        gap: .5rem;
+        width: 100%;
+        justify-content: flex-end;
+    }
+</style>

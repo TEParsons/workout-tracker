@@ -1,0 +1,30 @@
+{
+    "Walking": {
+        "intensity": "intensity",
+        "quantity": "time"
+    },
+    "Running": {
+        "intensity": "intensity",
+        "quantity": "time"
+    },
+    "Cross Trainer": {
+        "intensity": "intensity",
+        "quantity": "time"
+    },
+    "Cycling": {
+        "intensity": "intensity",
+        "quantity": "time"
+    },
+    "Chest Press": {
+        "intensity": "weight",
+        "quantity": "reps"
+    },
+    "Shoulder Press": {
+        "intensity": "weight",
+        "quantity": "reps"
+    },
+    "Yoga": {
+        "intensity": "weight",
+        "quantity": "reps"
+    }
+}

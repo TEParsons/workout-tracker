@@ -1,5 +1,5 @@
 <script>
-    import Dialog from "$lib/dialog/DIalog.svelte";
+    import Dialog from "$lib/dialog/Dialog.svelte";
 
     let {
         session=$bindable()

@@ -48,8 +48,8 @@
         flex-direction: column;
         gap: .5rem;
         position: absolute;
-        top: 0;
-        left: 0;
+        bottom: -1px;
+        left: -1px;
         padding: 1rem;
         background-color: var(--base);
         border: 1px solid var(--overlay);

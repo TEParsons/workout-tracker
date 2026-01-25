@@ -5,8 +5,6 @@
     import ExerciseCtrl from "$lib/ctrls/ExerciseCtrl.svelte";
     import CtrlPair from "$lib/ctrls/CtrlPair.svelte";
     import Table from "$lib/table/Table.svelte";
-    import ClearBtn from "$lib/ctrls/ClearBtn.svelte";
-    import Export from "$lib/table/Export.svelte";
     import { onMount, setContext } from "svelte";
 
     let session = $state([]);
@@ -23,7 +21,7 @@
         }
     })
 
-    let view = $state.raw("add")
+    let tableDlg = $state.raw()
 
     onMount(() => {
         // load session from local data on reload, if possible
@@ -42,61 +40,47 @@
     <h1>Workout Tracker</h1>
 </header>
 <main>
-    {#if view === "add"}
-        <div class=ctrls>
-            <ExerciseCtrl 
-                bind:value={set.exercise}
-                bind:intensity={set.intensity}
-                bind:quantity={set.quantity}
-            />
-            <CtrlPair 
-                bind:value={set.intensity.value}
-                bind:type={set.intensity.type}
-                ctrls={intensityCtrls}
-            />
-            <CtrlPair 
-                bind:value={set.quantity.value}
-                bind:type={set.quantity.type}
-                ctrls={quantityCtrls}
-            />
-        </div>
-        <div class=buttons>
-            <ConfirmedButton
-                onclick={evt => {
-                    // add set
-                    session.push($state.snapshot(set));
-                    // clear fields
-                    set.intensity.value = undefined
-                    set.quantity.value = undefined
-                }}
-            >
-                Add set
-            </ConfirmedButton>
-            <button
-                onclick={evt => view = "view"}
-            >
-                View table
-            </button>
-        </div>
-    {/if}
-    {#if view === "view"}
-        <Table 
-            bind:session={session}
+    <div class=ctrls>
+        <ExerciseCtrl 
+            bind:value={set.exercise}
+            bind:intensity={set.intensity}
+            bind:quantity={set.quantity}
         />
-        <div class=buttons>
-            <button
-                onclick={evt => view = "add"}
-            >
-                Back    
-            </button>
-            <ClearBtn
-                bind:session={session}
-            />
-            <Export 
-                bind:session={session}
-            />
-        </div>
-    {/if}
+        <CtrlPair 
+            bind:value={set.intensity.value}
+            bind:type={set.intensity.type}
+            ctrls={intensityCtrls}
+        />
+        <CtrlPair 
+            bind:value={set.quantity.value}
+            bind:type={set.quantity.type}
+            ctrls={quantityCtrls}
+        />
+    </div>
+    <div class=buttons>
+        <ConfirmedButton
+            onclick={evt => {
+                // add set
+                session.push($state.snapshot(set));
+                // clear fields
+                set.intensity.value = undefined
+                set.quantity.value = undefined
+            }}
+        >
+            Add set
+        </ConfirmedButton>
+        <button
+            onclick={evt => tableDlg.showModal()}
+        >
+            View table
+        </button>
+    </div>
+
+
+    <Table 
+        bind:handle={tableDlg}
+        bind:session={session}
+    />
 </main>
 
 

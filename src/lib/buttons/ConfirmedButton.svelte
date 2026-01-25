@@ -20,7 +20,7 @@
                 duration: 1000
             }}
         >
-            ✓ Added
+            Done
         </div>
     {/if}
     <button

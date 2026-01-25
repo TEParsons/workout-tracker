@@ -1,4 +1,5 @@
 <script>
+    import { ConfirmedButton } from "$lib/buttons"
     import { ctrls as intensityCtrls } from "$lib/ctrls/intensity";
     import { ctrls as quantityCtrls } from "$lib/ctrls/quantity";
     import ExerciseCtrl from "$lib/ctrls/ExerciseCtrl.svelte";
@@ -60,11 +61,17 @@
             />
         </div>
         <div class=buttons>
-            <button
-                onclick={evt => session.push($state.snapshot(set))}
+            <ConfirmedButton
+                onclick={evt => {
+                    // add set
+                    session.push($state.snapshot(set));
+                    // clear fields
+                    set.intensity.value = undefined
+                    set.quantity.value = undefined
+                }}
             >
                 Add set
-            </button>
+            </ConfirmedButton>
             <button
                 onclick={evt => view = "view"}
             >

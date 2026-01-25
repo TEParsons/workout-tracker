@@ -8,6 +8,10 @@
         session=$bindable()
     } = $props()
 
+    function capitalize(name) {
+        return name[0].toUpperCase() + name.slice(1)
+    }
+
     let byExercise = $derived.by(() => {
         let output = {}
         // iterate through sets...
@@ -23,10 +27,10 @@
             }
             // add any new intensity/quantity types
             if (!output[set.exercise].intensity.includes(set.intensity.type)) {
-                output[set.exercise].intensity.push(set.intensity.type)
+                output[set.exercise].intensity.push(capitalize(set.intensity.type))
             }
             if (!output[set.exercise].quantity.includes(set.quantity.type)) {
-                output[set.exercise].quantity.push(set.quantity.type)
+                output[set.exercise].quantity.push(capitalize(set.quantity.type))
             }
             // add set
             output[set.exercise].sets.push(set)

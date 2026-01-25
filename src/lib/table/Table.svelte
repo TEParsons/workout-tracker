@@ -1,7 +1,7 @@
 <script>
     import Clear from "./Clear.svelte";
     import Export from "./Export.svelte";
-    import Dialog from "$lib/dialog/DIalog.svelte";
+    import Dialog from "$lib/dialog/Dialog.svelte";
 
     let {
         handle=$bindable(),

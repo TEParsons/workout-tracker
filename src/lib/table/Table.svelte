@@ -27,10 +27,10 @@
             }
             // add any new intensity/quantity types
             if (!output[set.exercise].intensity.includes(set.intensity.type)) {
-                output[set.exercise].intensity.push(capitalize(set.intensity.type))
+                output[set.exercise].intensity.push(set.intensity.type)
             }
             if (!output[set.exercise].quantity.includes(set.quantity.type)) {
-                output[set.exercise].quantity.push(capitalize(set.quantity.type))
+                output[set.exercise].quantity.push(set.quantity.type)
             }
             // add set
             output[set.exercise].sets.push(set)
@@ -48,13 +48,13 @@
                     {#each Object.entries(byExercise) as [name, exercise]}
                         <tr class=intensity>
                             <th rowspan="2">{name}</th>
-                            <th>{exercise.intensity.join("/")}</th>
+                            <th>{exercise.intensity.map(label => capitalize(label)).join("/")}</th>
                             {#each exercise.sets as set}
                                 <td>{set.intensity.value}</td>
                             {/each}
                         </tr>
                         <tr class=quantity>
-                            <th>{exercise.quantity.join("/")}</th>
+                            <th>{exercise.quantity.map(label => capitalize(label)).join("/")}</th>
                             {#each exercise.sets as set}
                                 <td>{set.quantity.value}</td>
                             {/each}

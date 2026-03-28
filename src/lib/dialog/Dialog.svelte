@@ -16,6 +16,7 @@
 
 <style>
     dialog {
+        width: calc(100% - 2rem);
         border: 1px solid var(--overlay);
         background-color: var(--base);
         color: var(--text);
